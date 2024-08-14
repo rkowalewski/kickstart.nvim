@@ -593,7 +593,7 @@ require('lazy').setup({
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --  See `:help lsp-config` for information about keys and how to configure
       local servers = {
-        clangd = {},
+        -- clangd = { cmd = { 'clangd', '--log=verbose' } },
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -626,6 +626,8 @@ require('lazy').setup({
         vim.lsp.config(name, server)
         vim.lsp.enable(name)
       end
+
+      require('lspconfig').clangd.setup {}
 
       -- Special Lua Config, as recommended by neovim help docs
       vim.lsp.config('lua_ls', {
